@@ -11,36 +11,26 @@ l2 = cellstr(l2);
 query = cellstr(query);
 
 % The first and simplest step will be calculating the probability of the Lists using Laplacian Smoothing via k
-
 p_l1 = (size(l1) + k) / (size(l1) + size(l2) + 2);
 p_l2 = (size(l1) + k) / (size(l1) + size(l2) + 2);
 
 % Print to screen the results
-
 fprintf('P(List_1): %f\n', p_l1);
 fprintf('P(List_2): %f\n', p_l2);
 
-% Calculate Size of Vocabulary 
+% Prepare Dictionary
 % First We gather our word lists for each group using the wordList Function
 l1_words = wordList(l1);
 l2_words = wordList(l2);
+size_l1 = length(l1_words);
+size_l2 = length(l2_words);
 
-% Then a union is preformed on each list to find unique words
-dict = union(l1_words,l2_words);
+dict = union(l1_words,l2_words); % Then a union is preformed on each list to find unique words
+size_dict = length(dict); % add variable for size of dictionary
 
-% add variable for size of dictionary
-size_dict = length(dict);
-
-% break up query into individual words
-query_ind = strsplit(char(query), " ");
-
-% get size of query
-size_query = length(query_ind);
-
-% Array to store values for individual words of query
-p_query = zeros(size_query, 2);
-
-% 
+% Prepare Query For Calculations
+query_ind = strsplit(char(query), " "); % break up query into individual words
+size_query = length(query_ind); % get size of query
 
 % Calculate Probability of words in query for each list
 
