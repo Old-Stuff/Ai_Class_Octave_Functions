@@ -20,23 +20,13 @@ p_l2 = (size(l1) + k) / (size(l1) + size(l2) + 2);
 fprintf('P(List_1): %f\n', p_l1);
 fprintf('P(List_2): %f\n', p_l2);
 
-% Calculate Size of Vocabulary
-dict=strsplit(char(l1(1)), " "); %Initialize Dictionary With Strings from first row of first list
-n = length(l1);
+% Calculate Size of Vocabulary 
+% First We gather our word lists for each group using the wordList Function
+l1_words = wordList(l1);
+l2_words = wordList(l2);
 
-% iterate through first list and add unique words to dictionary
-if n >= 2
-	for i = 2:n
-		dict=union(dict, strsplit(char(l1(i)), " "));
-	end
-end
-
-% iterate through second list and add unique words to dictionary
-n = length(l2);
-
-for i = 1:n
-	dict=union(dict, strsplit(char(l2(i)), " "));
-end
+% Then a union is preformed on each list to find unique words
+dict = union(l1_words,l2_words);
 
 % add variable for size of dictionary
 size_dict = length(dict);
@@ -49,6 +39,8 @@ size_query = length(query_ind);
 
 % Array to store values for individual words of query
 p_query = zeros(size_query, 2);
+
+% 
 
 % Calculate Probability of words in query for each list
 
