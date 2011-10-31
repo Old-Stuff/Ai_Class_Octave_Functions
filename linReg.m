@@ -12,5 +12,7 @@ w1 = 0;
 w1 = ((m*(x'*y)) - (sum(x) * sum(y))) / ((m * sum(x.^2)) - sum(x)^2);
 w0 = ((1/m) * sum(y)) - ((w1 / m) * sum(x));
 
+w0
+w1
 
 end
