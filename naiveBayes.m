@@ -36,7 +36,7 @@ pq_gl=zeros(size_query,2);
 %Set probabilities for query | lists
 pq_top = [p_l1;p_l2];
 
-% Calculate Probability of words in query for each list
+% Calculate Probability of words inmovi query for each list
 for i = 1:size_query
 	pq_gl(i,1) = (occurence(query_ind(i),l1_words) + k) / (size_l1 + size_dict);
 	pq_gl(i,2) = (occurence(query_ind(i),l2_words) + k) / (size_l2 + size_dict);
@@ -49,7 +49,7 @@ end
 pq_l1 = pq_top(1) / (pq_top(1) + pq_top(2));
 pq_l2 = pq_top(2) / (pq_top(1) + pq_top(2));
 
-fprintf('%s | List_1 = %f\n', query{1}, pq_l1);
-fprintf('%s | List_2 = %f\n', query{1}, pq_l2);
+fprintf('List_1 | %s = %f\n', query{1}, pq_l1);
+fprintf('List_2 | %s = %f\n', query{1}, pq_l2);
 	
 end
